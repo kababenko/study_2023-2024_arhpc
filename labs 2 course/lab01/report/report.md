@@ -1,0 +1,140 @@
+---
+## Front matter
+title: "Лабораторная работа 1"
+subtitle: "Простейший вариант"
+author: "Бабенко Константин Алексеевич"
+
+## Generic otions
+lang: ru-RU
+toc-title: "Содержание"
+
+## Bibliography
+bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
+
+## Pdf output format
+toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt
+## I18n polyglossia
+polyglossia-lang:
+  name: russian
+  options:
+	- spelling=modern
+	- babelshorthands=true
+polyglossia-otherlangs:
+  name: english
+## I18n babel
+babel-lang: russian
+babel-otherlangs: english
+## Fonts
+mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+mainfontoptions: Ligatures=TeX
+romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
+monofontoptions: Scale=MatchLowercase,Scale=0.9
+## Biblatex
+biblatex: true
+biblio-style: "gost-numeric"
+biblatexoptions:
+  - parentracker=true
+  - backend=biber
+  - hyperref=auto
+  - language=auto
+  - autolang=other*
+  - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization
+figureTitle: "Рис."
+tableTitle: "Таблица"
+listingTitle: "Листинг"
+lofTitle: "Список иллюстраций"
+lotTitle: "Список таблиц"
+lolTitle: "Листинги"
+## Misc options
+indent: true
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{float} # keep figures where there are in the text
+  - \floatplacement{figure}{H} # keep figures where there are in the text
+---
+
+# Цель работы
+
+Целью данной работы является приобретение практических навыков установки операционной системы на виртуальную машину, настройки минимально 
+необходимых для дальнейшей работы сервисов.
+
+# Задание
+
+Установить и настроить виртуальныую машину.
+
+# Теоретическое введение
+
+
+
+# Выполнение лабораторной работы
+
+Для использования графического интерфейса запускаю менеджер виртуальных машин. Создаю новую виртуальную машину в графическом интерфейсе
+Укажите имя виртуальной машины, тип операционной системы(рис. @fig:001).
+![Новая виртуальная машина](1.jpg){#fig:001 width=70%}
+
+Указываю размер основной памяти виртуальной машины — от 2048 МБ. Указываю конфигурацию жёсткого диска — загрузочный, VDI(рис. @fig:002).
+![Оборудование](2.jpg){#fig:002 width=70%}
+
+Задаю размер диска — 80 ГБ(рис. @fig:003).
+![Виртуальный жесткий диск](3.jpg){#fig:003 width=70%}
+
+Итого(рис. @fig:004).
+![Итого](4.jpg){#fig:004 width=70%}
+
+# Установка драйверов для VirtualBox
+
+Вхожу в ОС под заданной вами при установке учётной записью. Нажимаю комбинацию Win+Enter для запуска терминала. Запускаю терминальный 
+мультиплексор tmux(рис. @fig:005).
+![Терминальный мультиплексор](5.jpg){#fig:005 width=70%}
+
+Переключаюсь на роль супер-пользователя(рис. @fig:006).
+![Роль супер-пользователя](6.jpg){#fig:006 width=70%}
+
+Устанавливаю средства разработки(рис. @fig:007).
+![Средства разработки](7.jpg){#fig:007 width=70%}
+
+Устонавливаю пакет DKMS(рис. @fig:008).
+![Пакет DKMS](8.jpg){#fig:008 width=70%}
+
+# Установка имени пользователя и названия хоста
+
+Меняю имя пользователя и пароль(рис. @fig:009).
+![Меняю имя пользователя и пароль](9.jpg){#fig:009 width=70%}
+
+# Домашнее задание
+
+Дожидаюсь загрузки графического окружения и открываю терминал. В окне терминала анализирую последовательность загрузки системы, 
+выполнив команду dmesg. Можно просто просмотреть вывод этой команды(рис. @fig:010).
+![Меняю имя пользователя и пароль](10.jpg){#fig:010 width=70%}
+
+Получаю следующую информацию:
+Версия ядра Linux (Linux version).
+Частота процессора (Detected Mhz processor).
+Модель процессора (CPU0).
+Объём доступной оперативной памяти (Memory available).
+Тип обнаруженного гипервизора (Hypervisor detected)(рис. @fig:011).
+![Информация](11.jpg){#fig:011 width=70%}
+
+
+# Выводы
+
+Я приобрел практические навыки установки операционной системы на виртуальную машину, настройки минимально необходимых для 
+дальнейшей работы сервисов.
+
+# Список литературы{.unnumbered}
+
+::: {#refs}
+:::
