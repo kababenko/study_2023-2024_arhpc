@@ -1,55 +1,21 @@
-## [1.0.4](https://github.com/yamadharma/course-directory-student-template/compare/v1.0.3...v1.0.4) (2023-02-07)
+# 1.0.0 (2024-03-06)
 
 
 ### Features
 
-* **course:** add presentation element ([afe4900](https://github.com/yamadharma/course-directory-student-template/commit/afe49009b2f1ca47385f3020048617a0570ed196))
-
-
-
-## [1.0.3](https://github.com/yamadharma/course-directory-student-template/compare/v1.0.2...v1.0.3) (2023-02-07)
-
-
-
-## [1.0.2](https://github.com/yamadharma/course-directory-student-template/compare/v1.0.1...v1.0.2) (2023-01-20)
-
-
-### Features
-
-* **courses:** add file for mathmod ([2150012](https://github.com/yamadharma/course-directory-student-template/commit/2150012e885375b09edc64d4c709bfb8bc6edacc))
-
-
-
-## [1.0.1](https://github.com/yamadharma/course-directory-student-template/compare/v1.0.0...v1.0.1) (2022-09-06)
-
-
-### Features
-
-* **course:** add mathsec course ([4127c7b](https://github.com/yamadharma/course-directory-student-template/commit/4127c7b10f6784e6d3e54effa3b1e57b4808dfe6))
-* **course:** add sciprog ([9ded3b5](https://github.com/yamadharma/course-directory-student-template/commit/9ded3b53f48275c394b3c6bdb465013e83d88def))
-
-
-
-# 1.0.0 (2022-09-05)
-
-
-### Bug Fixes
-
-* **course:** fix number of labs in arch-pc ([edd3793](https://github.com/yamadharma/course-directory-student-template/commit/edd379372c071c796cf84c38cdd7fe996afd0cdb))
-* **doc:** fix typo in documentation ([1220bc4](https://github.com/yamadharma/course-directory-student-template/commit/1220bc4a802e558e2a18036b43e39ca131ee644c))
-* **doc:** move documentation to README.md ([5875d4b](https://github.com/yamadharma/course-directory-student-template/commit/5875d4bc52646e868974ec518a96fe18c0235b40))
-* **script:** remove unneeded scripts ([2371297](https://github.com/yamadharma/course-directory-student-template/commit/23712978562979560713861201f50c82e447e042))
-
-
-### Features
-
-* **course:** add arch-pc course ([d870fa4](https://github.com/yamadharma/course-directory-student-template/commit/d870fa48c7955d3a068e14bb096c5530c9c48ee1))
-* **course:** add new course ([c63d6b1](https://github.com/yamadharma/course-directory-student-template/commit/c63d6b162ed4df91d96bd9a9ea5ee014bdd42f73))
-* **doc:** add documentation ([6e6fa80](https://github.com/yamadharma/course-directory-student-template/commit/6e6fa80ecf9a7a2fa1dbd3e45cdf28dc07a1a1f8))
-* **make:** add help to Makefile ([8015255](https://github.com/yamadharma/course-directory-student-template/commit/8015255d434b2a4735f0ea406ef99be4d68f8b6f))
-* **make:** add list of courses ([395c5da](https://github.com/yamadharma/course-directory-student-template/commit/395c5da4de44d792ee5ceb45f255004a0e0f7e30))
-* **script:** add script for auto-determine name of course ([10a8b58](https://github.com/yamadharma/course-directory-student-template/commit/10a8b58ccf830930dc6daf15d664582ce87913e3))
-
+* **main:** add files lab-3 ([1f16e02](https://github.com/kababenko/study_2023-2024_arhpc/commit/1f16e02485a21497cd967b35110fb81a87170356))
+* **main:** add files lab-3 ([afd36d1](https://github.com/kababenko/study_2023-2024_arhpc/commit/afd36d1f2bab345a7c5b46f2749d1125ca3f9ca6))
+* **main:** add files lab-3 ([8b40bee](https://github.com/kababenko/study_2023-2024_arhpc/commit/8b40bee248571e909783560cc396174d9aeefc35))
+* **main:** add files lab-3 ([dbed6a5](https://github.com/kababenko/study_2023-2024_arhpc/commit/dbed6a5adcfdb63a5678f47390dab36e8cb710ec))
+* **main:** make course structure ([0486c23](https://github.com/kababenko/study_2023-2024_arhpc/commit/0486c2356e264f026bab61e06dcb44340dfa6c1c))
+* **main:** make course structure ([b9b2cb4](https://github.com/kababenko/study_2023-2024_arhpc/commit/b9b2cb4abf584d00b835a883264d7b88c369dff1))
+* **main:** make course structure ([23a47cc](https://github.com/kababenko/study_2023-2024_arhpc/commit/23a47ccf4663b67a3e2289213175e447175ca1f0))
+* **main:** make course structure ([b6ffab5](https://github.com/kababenko/study_2023-2024_arhpc/commit/b6ffab53988f37cadfe6d77d357780542a55f688))
+* **main:** make course structure ([8212f7b](https://github.com/kababenko/study_2023-2024_arhpc/commit/8212f7b695feec694e6c28e4f81e0de257bca49c))
+* **main:** make course structure ([82770f4](https://github.com/kababenko/study_2023-2024_arhpc/commit/82770f4bd60518eda3ae4572aad061295d4c8b65))
+* **main:** make course structure ([f0698a6](https://github.com/kababenko/study_2023-2024_arhpc/commit/f0698a6f89757b822ea6b218479e9dae018523af))
+* **main:** make course structure ([e2d8aa5](https://github.com/kababenko/study_2023-2024_arhpc/commit/e2d8aa51d38349c7bb2e5f269fbea272b2636bf4))
+* **main:** make course structure ([a739509](https://github.com/kababenko/study_2023-2024_arhpc/commit/a7395098f59cd52b40e879ebc8d99f3d587f09bc))
 
 
 
