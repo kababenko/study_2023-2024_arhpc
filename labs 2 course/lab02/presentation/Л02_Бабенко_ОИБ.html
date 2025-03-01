@@ -1,0 +1,1018 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><hr>
+<h2 id="front-matter">Front matter</h2>
+<p>title: &quot;Отчет по лабораторной работе №2&quot;
+subtitle: &quot;Основы информационной безопасности&quot;
+author: &quot;Дворкина Ева, НКАбд-01-22&quot;</p>
+<h2 id="generic-otions">Generic otions</h2>
+<p>lang: ru-RU
+toc-title: &quot;Содержание&quot;</p>
+<h2 id="bibliography">Bibliography</h2>
+<p>bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl</p>
+<h2 id="pdf-output-format">Pdf output format</h2>
+<p>toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt</p>
+<h2 id="i18n-polyglossia">I18n polyglossia</h2>
+<p>polyglossia-lang:
+  name: russian
+  options:</p>
+<pre><code>-<span class="ruby"> spelling=modern
+</span>-<span class="ruby"> babelshorthands=<span class="hljs-literal">true</span></span>
+</code></pre><p>polyglossia-otherlangs:
+  name: english</p>
+<h2 id="i18n-babel">I18n babel</h2>
+<p>babel-lang: russian
+babel-otherlangs: english</p>
+<h2 id="fonts">Fonts</h2>
+<p>mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+mainfontoptions: Ligatures=TeX
+romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
+monofontoptions: Scale=MatchLowercase,Scale=0.9</p>
+<h2 id="biblatex">Biblatex</h2>
+<p>biblatex: true
+biblio-style: &quot;gost-numeric&quot;
+biblatexoptions:</p>
+<ul>
+<li>parentracker=true</li>
+<li>backend=biber</li>
+<li>hyperref=auto</li>
+<li>language=auto</li>
+<li>autolang=other*</li>
+<li>citestyle=gost-numeric<h2 id="pandoc-crossref-latex-customization">Pandoc-crossref LaTeX customization</h2>
+figureTitle: &quot;Рис.&quot;
+tableTitle: &quot;Таблица&quot;
+listingTitle: &quot;Листинг&quot;
+lofTitle: &quot;Список иллюстраций&quot;
+lolTitle: &quot;Листинги&quot;<h2 id="misc-options">Misc options</h2>
+indent: true
+header-includes:</li>
+<li>\usepackage{indentfirst}</li>
+<li>\usepackage{float} # keep figures where there are in the text</li>
+<li>\floatplacement{figure}{H} # keep figures where there are in the text</li>
+</ul>
+<hr>
+<h1 id="-">Цель работы</h1>
+<p>Получение практических навыков работы в консоли с атрибутами файлов, закрепление теоретических основ дискреционного разграничения доступа в современных системах с открытым кодом на базе ОС Linux</p>
+<h1 id="-">Задание</h1>
+<ol>
+<li>Работа с атрибутами файлов</li>
+<li>Заполнение таблицы &quot;Установленные права и разрешённые действия&quot; (см. табл. 2.1)</li>
+<li>Заполнение таблицы &quot;Минимальные права для совершения операций&quot; (см. табл. 2.2)</li>
+</ol>
+<h1 id="-">Теоретическое введение</h1>
+<p><strong>Операционная система</strong> — это комплекс программ, предназначенных для управления ресурсами компьютера и организации взаимодействия с пользователем. [1]</p>
+<p><strong>Права доступа</strong> определяют, какие действия конкретный пользователь может или не может совершать с определенным файлами и каталогами. С помощью разрешений можно создать надежную среду — такую, в которой никто не может поменять содержимое ваших документов или повредить системные файлы. [2].</p>
+<h1 id="-">Выполнение лабораторной работы</h1>
+<h2 id="-">Атрибуты файлов</h2>
+<ol>
+<li>В операционной системе Rocky создаю нового пользователя guest через учетную запись администратора (рис. 1).</li>
+</ol>
+<p><img src="image/1.PNG" alt="Добавление пользователя">{#fig:001 width=70%}</p>
+<ol>
+<li>Далее задаю пароль для созданной учетной записи (рис. 2).</li>
+</ol>
+<p><img src="image/2.PNG" alt="Добавление пароля для пользователя">{#fig:002 width=70%}</p>
+<ol>
+<li>Сменяю пользователя в системе на только что созданного пользователя guest (рис. 3).</li>
+</ol>
+<p><img src="image/3.PNG" alt="Вход через аккаунт пользователя">{#fig:003 width=70%}</p>
+<ol>
+<li>Определяю с помощью команды pwd, что я нахожусь в директории /home/guest/. Эта директория является домашней, ведь в приглашении командой строкой стоит значок ~, указывающий, что я в домашней директории (рис. 4).</li>
+</ol>
+<p><img src="image/4.PNG" alt="Текущая директория">{#fig:004 width=70%}</p>
+<ol>
+<li>Уточняю имя пользователя (рис. 5)</li>
+</ol>
+<p><img src="image/5.PNG" alt="Информация об имени пользователе">{#fig:005 width=70%}</p>
+<ol>
+<li>В выводе команды groups информация только о названии группы, к которой относится пользователь. В выводе команды id можно найти больше информации: имя пользователя и имя группы, также коды имени пользователя и группы  (рис. 6)</li>
+</ol>
+<p><img src="image/6.PNG" alt="Информация о пользователе">{#fig:006 width=70%}</p>
+<ol>
+<li>Имя пользователя в приглашении командной строкой совпадает с именем пользователя, которое выводит команда whoami (рис. 7)</li>
+</ol>
+<p><img src="image/7.PNG" alt="Сравнение информации об имени пользователя">{#fig:007 width=70%}</p>
+<ol>
+<li>Получаю информацию о пользователе с помощью команды <pre><code>cat <span class="hljs-regexp">/etc/</span>passwd | <span class="hljs-keyword">grep</span> guest
+</code></pre></li>
+</ol>
+<p>В выводе получаю коды пользователя и группы, адрес домашней директории (рис. 8).</p>
+<p><img src="image/8.PNG" alt="Просмотр файла passwd">{#fig:008 width=70%}</p>
+<ol>
+<li>Да, список поддиректорий директории home получилось получить с помощью команды ls -l, если мы добавим опцию -a, то сможем увидеть еще и директорию пользователя root. Права у директории:</li>
+</ol>
+<p>root: drwxr-xr-x,</p>
+<p>evdvorkina и guest: drwx------ (рис. 9).</p>
+<p><img src="image/9.PNG" alt="Просмотр содержимого директории">{#fig:009 width=70%}</p>
+<ol>
+<li>Пыталась проверить расширенные атрибуты директорий. Нет, их увидеть не удалось (рис. 10). Увидеть расширенные атрибуты других пользователей, тоже не удалось, для них даже вывода списка директорий не было.</li>
+</ol>
+<p><img src="image/11.PNG" alt="Проверка расширенных атрибутов">{#fig:010 width=70%}</p>
+<ol>
+<li>Создаю поддиректорию dir1 для домашней директории. Расширенные атрибуты командой lsattr просмотреть у директории не удается, но атрибуты есть: drwxr-xr-x, их удалось просмотреть с помощью команды ls -l (рис. 11).</li>
+</ol>
+<p><img src="image/12.PNG" alt="Создание поддиректории">{#fig:011 width=70%}</p>
+<ol>
+<li>Снимаю атрибуты командой chmod 000 dir1, при проверке с помощью команды ls -l видно, что теперь атрибуты действительно сняты (рис. 12).</li>
+</ol>
+<p><img src="image/13.PNG" alt="Снятие атрибутов с директории">{#fig:012 width=70%}</p>
+<ol>
+<li>Попытка создать файл в директории dir1. Выдает ошибку: &quot;Отказано в доступе&quot; (рис. 13). </li>
+</ol>
+<p><img src="image/14.PNG" alt="Попытка создания файла">{#fig:013 width=70%}</p>
+<p>Вернув права директории и использовав снова командy ls -l можно убедиться, что файл не был создан (рис. 14). </p>
+<p><img src="image/15.PNG" alt="Проверка содержимого директории">{#fig:014 width=70%}</p>
+<h2 id="-2-1">Заполнение таблицы 2.1</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Права директории</td>
+<td>Права  файла</td>
+<td>Создание  файла</td>
+<td>Удаление  файла</td>
+<td>Запись  в файл</td>
+<td>Чтение  файла</td>
+<td>Смена  директории</td>
+<td>Просмотр файлов в  директории</td>
+<td>Переимено- вание файла</td>
+<td>Смена  атрибутов  файла</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(000)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(100)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(200)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(000)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(100)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(200)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(300)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(400)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(500)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(600)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(300)</td>
+<td>(700)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(400)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(500)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(000)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(100)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(200)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(300)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(400)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(500)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(600)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(600)</td>
+<td>(700)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(000)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(100)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(200)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(300)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(400)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(500)</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(600)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>d(700)</td>
+<td>(700)</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 2.1 «Установленные права и разрешённые действия»</p>
+<p>Пример заполнения таблицы 2.1 (рис. 15).</p>
+<p><img src="image/16.PNG" alt="Изменение прав директории и файла">{#fig:015 width=70%}</p>
+<h2 id="-2-2">Заполнение таблицы 2.2</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Операция</td>
+<td></td>
+<td>Минимальные  права на  директорию</td>
+<td></td>
+<td>Минимальные  права на файл</td>
+</tr>
+<tr>
+<td>Создание файла</td>
+<td></td>
+<td>d(300)</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Удаление файла</td>
+<td></td>
+<td>d(300)</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Чтение файла</td>
+<td></td>
+<td>d(100)</td>
+<td></td>
+<td>(400)</td>
+</tr>
+<tr>
+<td>Запись в файл</td>
+<td></td>
+<td>d(100)</td>
+<td></td>
+<td>(200)</td>
+</tr>
+<tr>
+<td>Переименование файла</td>
+<td></td>
+<td>d(300)</td>
+<td></td>
+<td>(000)</td>
+</tr>
+<tr>
+<td>Создание поддиректории</td>
+<td></td>
+<td>d(300)</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Удаление поддиректории</td>
+<td></td>
+<td>d(300)</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 2.2 &quot;Минимальные права для совершения операций&quot;</p>
+<p>Пример заполнения таблицы 2.2 (рис. 16)</p>
+<p><img src="image/17.PNG" alt="Проверка возможности создать поддиректорию">{#fig:016 width=70%}</p>
+<h1 id="-">Выводы</h1>
+<p>Были получены практические навыки работы в консоли с атрибутами файлов, закреплены теоретические основы дискреционного разграничения доступа в современных системах с открытым кодом на базе ОС Linux.</p>
+<h1 id="-">Список литературы. Библиография</h1>
+<p>[1] Операционные системы: <a href="https://blog.skillfactory.ru/glossary/operaczionnaya-sistema/">https://blog.skillfactory.ru/glossary/operaczionnaya-sistema/</a></p>
+<p>[2] Права доступа: <a href="https://codechick.io/tutorials/unix-linux/unix-linux-permissions">https://codechick.io/tutorials/unix-linux/unix-linux-permissions</a></p>
+</body></html>
