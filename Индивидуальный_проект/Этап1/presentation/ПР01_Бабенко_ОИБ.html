@@ -1,0 +1,161 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><hr>
+<h2 id="front-matter">Front matter</h2>
+<p>title: &quot;Отчет по первому этапу индивидуального проекта&quot;
+subtitle: &quot;Основы информационной безопасности&quot;
+author: &quot;Бабенко Константин, НКАбд-01-23&quot;</p>
+<h2 id="generic-otions">Generic otions</h2>
+<p>lang: ru-RU
+toc-title: &quot;Содержание&quot;</p>
+<h2 id="bibliography">Bibliography</h2>
+<p>bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl</p>
+<h2 id="pdf-output-format">Pdf output format</h2>
+<p>toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt</p>
+<h2 id="i18n-polyglossia">I18n polyglossia</h2>
+<p>polyglossia-lang:
+  name: russian
+  options:</p>
+<pre><code>-<span class="ruby"> spelling=modern
+</span>-<span class="ruby"> babelshorthands=<span class="hljs-literal">true</span></span>
+</code></pre><p>polyglossia-otherlangs:
+  name: english</p>
+<h2 id="i18n-babel">I18n babel</h2>
+<p>babel-lang: russian
+babel-otherlangs: english</p>
+<h2 id="fonts">Fonts</h2>
+<p>mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+mainfontoptions: Ligatures=TeX
+romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
+monofontoptions: Scale=MatchLowercase,Scale=0.9</p>
+<h2 id="biblatex">Biblatex</h2>
+<p>biblatex: true
+biblio-style: &quot;gost-numeric&quot;
+biblatexoptions:</p>
+<ul>
+<li>parentracker=true</li>
+<li>backend=biber</li>
+<li>hyperref=auto</li>
+<li>language=auto</li>
+<li>autolang=other*</li>
+<li>citestyle=gost-numeric<h2 id="pandoc-crossref-latex-customization">Pandoc-crossref LaTeX customization</h2>
+figureTitle: &quot;Рис.&quot;
+tableTitle: &quot;Таблица&quot;
+listingTitle: &quot;Листинг&quot;
+lofTitle: &quot;Список иллюстраций&quot;
+lotTitle: &quot;Список таблиц&quot;
+lolTitle: &quot;Листинги&quot;<h2 id="misc-options">Misc options</h2>
+indent: true
+header-includes:</li>
+<li>\usepackage{indentfirst}</li>
+<li>\usepackage{float} # keep figures where there are in the text</li>
+<li>\floatplacement{figure}{H} # keep figures where there are in the text</li>
+</ul>
+<hr>
+<h1 id="-">Цель работы</h1>
+<p>Приобретение практических навыков по установке операционной системы Linux на виртуальную машину.</p>
+<h1 id="-">Задание</h1>
+<ol>
+<li>Установить дистрибутив Kali Linux на виртуальную машину VirtualBox.</li>
+</ol>
+<h1 id="-">Теоретическое введение</h1>
+<p>Kali Linux — это дистрибутив Linux на основе Debian с открытым исходным кодом, предназначенный для расширенного тестирования на проникновение, проверки уязвимостей, аудита безопасности систем и сетей.</p>
+<p><strong>Сферы применения дистрибутива</strong>:</p>
+<ul>
+<li><p>Тестирование на проникновение. Kali Linux широко используется в области тестирования безопасности, чтобы оценить уязвимости в компьютерных системах, сетях и приложениях. ОС предоставляет множество инструментов для обнаружения уязвимостей.</p>
+</li>
+<li><p>Цифровое расследование. Дистрибутив предоставляет инструменты для сбора и анализа цифровых данных, включая восстановление удаленных файлов, извлечение метаданных, анализ системных журналов и т.д.</p>
+</li>
+<li><p>Обратная разработка. Kali Linux содержит инструменты, которые помогают разработчикам анализировать готовое программное обеспечение, чтобы понять его работу, выявить уязвимости или разработать альтернативные реализации.</p>
+</li>
+<li><p>Безопасность беспроводных сетей. У ОС есть набор инструментов для проверки и обеспечения безопасности беспроводных сетей. Kali Linux поддерживает анализ беспроводных протоколов, перехват и дешифрование сетевого трафика, а также атаки на беспроводные сети.</p>
+</li>
+<li><p>Защита информации. Kali Linux также может использоваться для обеспечения безопасности информации, включая мониторинг сетевой активности, обнаружение вторжений, защиту от DDoS-атак и настройку брандмауэров.</p>
+</li>
+</ul>
+<h1 id="-">Выполнение лабораторной работы</h1>
+<p>Открываю VirtualBox, нажимаю <code>создать</code>, в появившемся окне выбираю тип операционной системы Linux, версия - Debian, задаю имя машины (рис. 1).</p>
+<p><img src="image/1.PNG" alt="Выбор имени и операционной системы">{#fig:001 width=70%}</p>
+<p>Настраиваю основную память и количество выделяемых процессоров, необходимое для работы без помех (рис. 2).</p>
+<p><img src="image/2.PNG" alt="Настройка оборудования виртуальной машины">{#fig:002 width=70%}</p>
+<p>Настраиваю размер виртуального жесткого диска, выбираю 40ГБ (рис. 3).</p>
+<p><img src="image/3.PNG" alt="Настройка размера виртуального жесткого диска">{#fig:003 width=70%}</p>
+<p>Соглашаюсь с получившимися характеристиками, жму <code>готово</code> (рис. 4).</p>
+<p><img src="image/4.PNG" alt="Окно создания виртуальной машины">{#fig:004 width=70%}</p>
+<p>Подключаю ранее скачанный образ диска (рис. 5).</p>
+<p><img src="image/5.PNG" alt="Подключение образа диска">{#fig:005 width=70%}</p>
+<p>В окне установки Kali выбираю графическую установку (рис. 6).</p>
+<p><img src="image/6.PNG" alt="Выбор способа установки">{#fig:006 width=70%}</p>
+<p>Выбираю язык, на котором будет установка (рис. 7).</p>
+<p><img src="image/7.PNG" alt="Выбор языка установки">{#fig:007 width=70%}</p>
+<p>В местоположении выбираю Российскую Федерацию (рис. 8).</p>
+<p><img src="image/8.PNG" alt="Выбор местоположения">{#fig:008 width=70%}</p>
+<p>Выбираю раскладку клавиатуры (рис. 9).</p>
+<p><img src="image/9.PNG" alt="Настройка клавиатуры">{#fig:009 width=70%}</p>
+<p>Выбираю комбинацию горячих клавиш для переключения раскладки клавиатуры (рис. 10).</p>
+<p><img src="image/10.PNG" alt="Настройка переключения раслкадки">{#fig:010 width=70%}</p>
+<p>Ввожу имя компьютера (рис. 11).</p>
+<p><img src="image/11.PNG" alt="Ввод имени компьютера">{#fig:011 width=70%}</p>
+<p>Ввожу имя домена (рис. 12).</p>
+<p><img src="image/12.PNG" alt="Ввод имени домена.">{#fig:012 width=70%}</p>
+<p>Ввожу имя пользователя, у которой будут права суперпользователя (рис. 13).</p>
+<p><img src="image/13.PNG" alt="Настройка учетной записи">{#fig:013 width=70%}</p>
+<p>Это же имя по умолчанию предлагается как имя моей учетной записи (рис. 14).</p>
+<p><img src="image/14.PNG" alt="Настройка учетной записи">{#fig:014 width=70%}</p>
+<p>Ввожу пароль для созданного пользователя (рис. 15).</p>
+<p><img src="image/15.PNG" alt="Настройка пароля">{#fig:015 width=70%}</p>
+<p>Выбираю часовой пояс (рис. 16).</p>
+<p><img src="image/16.PNG" alt="Настройка времени">{#fig:016 width=70%}</p>
+<p>Теперь установщик проверяет диски и предлагает различные варианты,
+в зависимости от настроек. Созданный виртуальный диск чистый, поэтому
+я выбираю «весь диск» (рис. 17).</p>
+<p><img src="image/17.PNG" alt="Разметка дисков">{#fig:017 width=70%}</p>
+<p>Убеждаюсь, что выбран нужный виртуальный диск, продолжаю
+настройку разметки дисков (рис. 18).</p>
+<p><img src="image/18.PNG" alt="Разметка дисков">{#fig:018 width=70%}</p>
+<p>Далее установщик предлагает выбрать схему разметки, ее я оставляю по
+умолчанию «все файлы в одном разделе» (рис. 19).</p>
+<p><img src="image/19.PNG" alt="Разметка дисков">{#fig:019 width=70%}</p>
+<p>После этого этапа надо подтвердить
+окончание разметки дисков, чтобы изменения были записаны (рис. 20).</p>
+<p><img src="image/20.PNG" alt="Разметка дисков">{#fig:020 width=70%}</p>
+<p>Затем установщик дает еще раз просмотреть конфигурацию диска,
+прежде чем внести необратимые изменения (рис. 21). После этого этапа
+начнется установка.</p>
+<p><img src="image/21.PNG" alt="Разметка дисков">{#fig:021 width=70%}</p>
+<p>Далее я могу выбрать, какие метапакеты (пустые пакеты, которые
+только описывают зависимости) я хотите установить. Выбор по
+умолчанию установит стандартную систему Kali Linux, поэтому я не хочу
+менять выбор (рис. 22).</p>
+<p><img src="image/22.PNG" alt="Выбор программного обеспечения">{#fig:022 width=70%}</p>
+<p>Подтверждаю установку системного загрузчика GRUB (Загрузчик
+операционной системы от проекта GNU программа для управления
+процессом загрузки), также выбираю виртуальный диск, на который
+устанавливать GRUB  (рис. 23).</p>
+<p><img src="image/23.PNG" alt="Установка системного загрузчика">{#fig:023 width=70%}</p>
+<p>Завершаю установку (рис. 24).</p>
+<p><img src="image/24.PNG" alt="Завершение установки">{#fig:024 width=70%}</p>
+<p>Проверяю, что в носителях теперь пусто (рис. 25).</p>
+<p><img src="image/25.PNG" alt="Проверка носителей">{#fig:025 width=70%}</p>
+<p>Вхожу в систему от имени своего пользователя (рис. 26).</p>
+<p><img src="image/26.PNG" alt="Вход в систему">{#fig:026 width=70%}</p>
+<p>Вход в систему выполнен успешно, как и ее загрузка (рис. 27).</p>
+<p><img src="image/27.PNG" alt="Успешная загрузка системы">{#fig:027 width=70%}</p>
+<h1 id="-">Выводы</h1>
+<p>Приобрел практические навыки по установке операционной системы Linux на виртуальную машину. Установил дистрибутив Kali LInux на VirtualBox.</p>
+<h1 id="-">Список литературы. Библиография.</h1>
+<p>[1] <a href="https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/">Официальная документация по устновке Kali Linux на VirtualBox</a></p>
+</body></html>
