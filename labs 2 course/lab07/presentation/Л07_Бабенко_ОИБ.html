@@ -1,0 +1,223 @@
+<h1 id="цель-работы">Цель работы</h1>
+<p>Освоить на практике применение режима однократного гаммирования</p>
+<h1 id="задание">Задание</h1>
+<p>Нужно подобрать ключ, чтобы получить сообщение «С Новым Годом,
+друзья!». Требуется разработать приложение, позволяющее шифровать и
+дешифровать данные в режиме однократного гаммирования. Приложение
+должно: 1. Определить вид шифротекста при известном ключе и известном
+открытом тексте. 2. Определить ключ, с помощью которого шифротекст может
+быть преобразован в некоторый фрагмент текста, представляющий собой один
+из возможных вариантов прочтения открытого текста</p>
+<h1 id="теоретическое-введение">Теоретическое введение</h1>
+<p>Предложенная Г. С. Вернамом так называемая «схема однократного
+использования (гаммирования)» является простой, но надёжной схемой
+шифрования данных. <span class="citation"
+data-cites="course">[@course]</span></p>
+<p><strong>Гаммирование</strong> представляет собой наложение (снятие)
+на открытые (зашифрованные) данные последовательности элементов других
+данных, полученной с помощью некоторого криптографического алгоритма,
+для получения зашифрованных (открытых) данных. Иными словами, наложение
+гаммы — это сложение её элементов с элементами открытого (закрытого)
+текста по некоторому фиксированному модулю, значение которого
+представляет собой известную часть алгоритма шифрования.</p>
+<p>В соответствии с теорией криптоанализа, если в методе шифрования
+используется однократная вероятностная гамма (однократное гаммирование)
+той же длины, что и подлежащий сокрытию текст, то текст нельзя раскрыть.
+Даже при раскрытии части последовательности гаммы нельзя получить
+информацию о всём скрываемом тексте.</p>
+<p>Наложение гаммы по сути представляет собой выполнение операции
+сложения по модулю 2 (XOR) (обозначаемая знаком ⊕) между элементами
+гаммы и элементами подлежащего сокрытию текста. Напомним, как работает
+операция XOR над битами: 0 ⊕ 0 = 0, 0 ⊕ 1 = 1, 1 ⊕ 0 = 1, 1 ⊕ 1 = 0.</p>
+<p>Такой метод шифрования является симметричным, так как двойное
+прибавление одной и той же величины по модулю 2 восстанавливает исходное
+значение, а шифрование и расшифрование выполняется одной и той же про-
+граммой.</p>
+<p>Если известны ключ и открытый текст, то задача нахождения шифротекста
+заключается в применении к каждому символу открытого текста следующего
+правила:</p>
+<p><code>Ci = Pi ⊕ Ki</code>, (7.1)</p>
+<p><em>где Ci — i-й символ получившегося зашифрованного послания, Pi —
+i-й символ открытого текста, Ki — i-й символ ключа, i = 1, m.
+Размерности открытого текста и ключа должны совпадать, и полученный
+шифротекст будет такой же длины.</em></p>
+<p>Если известны шифротекст и открытый текст, то задача нахождения ключа
+решается также в соответствии с (7.1), а именно, обе части равенства
+необходимо сложить по модулю 2 с Pi:</p>
+<p><code>Ci ⊕ Pi = Pi ⊕ Ki ⊕ Pi = Ki</code>,</p>
+<p><code>Ki = Ci ⊕ Pi</code>.</p>
+<p>Открытый текст имеет символьный вид, а ключ — шестнадцатеричное
+представление. Ключ также можно представить в символьном виде,
+воспользовавшись таблицей ASCII-кодов.</p>
+<p>К. Шеннон доказал абсолютную стойкость шифра в случае, когда
+однократно используемый ключ, длиной, равной длине исходного сообщения,
+является фрагментом истинно случайной двоичной последовательности с
+равномерным законом распределения. Криптоалгоритм не даёт никакой
+информации об открытом тексте: при известном зашифрованном сообщении C
+все различные ключевые последовательности K возможны и равновероятны, а
+значит, возможны и любые сообщения P.</p>
+<p>Необходимые и достаточные условия абсолютной стойкости шифра:</p>
+<ul>
+<li><p>полная случайность ключа;</p></li>
+<li><p>равенство длин ключа и открытого текста;</p></li>
+<li><p>однократное использование ключа.</p></li>
+</ul>
+<p>Рассмотрим пример.</p>
+<p>Ключ Центра:</p>
+<p><code>05 0C 17 7F 0E 4E 37 D2 94 10 09 2E 22 57 FF C8 0B B2 70 54</code></p>
+<p>Сообщение Центра:</p>
+<p><em>Штирлиц – Вы Герой!!</em></p>
+<p><code>D8 F2 E8 F0 EB E8 F6 20 2D 20 C2 FB 20 C3 E5 F0 EE E9 21 21</code></p>
+<p>Зашифрованный текст, находящийся у Мюллера:</p>
+<p><code>DD FE FF 8F E5 A6 C1 F2 B9 30 CB D5 02 94 1A 38 E5 5B 51 75</code></p>
+<p>Дешифровальщики попробовали ключ:</p>
+<p><code>05 0C 17 7F 0E 4E 37 D2 94 10 09 2E 22 55 F4 D3 07 BB BC 54</code></p>
+<p>и получили текст:</p>
+<p><code>D8 F2 E8 F0 EB E8 F6 20 2D 20 C2 FB 20 C1 EE EB E2 E0 ED 21</code></p>
+<p><em>Штирлиц - Вы Болван!</em></p>
+<p>Другие ключи дадут лишь новые фразы, пословицы, стихотворные строфы,
+словом, всевозможные тексты заданной длины.</p>
+<h1 id="выполнение-лабораторной-работы">Выполнение лабораторной
+работы</h1>
+<p>Я выполнял лабораторную работа на языке программирования Python,
+листинг программы и результаты выполнения приведены в отчете.</p>
+<p>Требуется разработать программу, позволяющее шифровать и дешифровать
+данные в режиме однократного гаммирования. Начнем с создания функции для
+генерации случайного ключа (рис. <span class="citation"
+data-cites="fig:001">[-@fig:001]</span>).</p>
+<figure>
+<img src="image/1.PNG" id="fig:001" style="width:70.0%"
+alt="Функция генерации ключа" />
+<figcaption aria-hidden="true">Функция генерации ключа</figcaption>
+</figure>
+<p>Необходимо определить вид шифротекста при известном ключе и известном
+открытом тексте. Так как операция исключающего или отменяет сама себя,
+делаю одну функцю и для шифрования и для дешифрования текста (рис. <span
+class="citation" data-cites="fig:002">[-@fig:002]</span>).</p>
+<figure>
+<img src="image/2.PNG" id="fig:002" style="width:70.0%"
+alt="Функция для шифрования текста" />
+<figcaption aria-hidden="true">Функция для шифрования
+текста</figcaption>
+</figure>
+<p>Нужно определить ключ, с помощью которого шифротекст может быть
+преобразован в некоторый фрагмент текста, представляющий собой один из
+возможных вариантов прочтения открытого текста. Для этого создаю функцию
+для нахождения возможных ключей для фрагмента текста (рис. <span
+class="citation" data-cites="fig:003">[-@fig:003]</span>).</p>
+<figure>
+<img src="image/3.PNG" id="fig:003" style="width:70.0%"
+alt="Подбор возможных ключей для фрагмента" />
+<figcaption aria-hidden="true">Подбор возможных ключей для
+фрагмента</figcaption>
+</figure>
+<p>Проверка работы всех функций. Шифрование и дешифрование происходит
+верно, как и нахождение ключей, с помощью которых можно расшифровать
+верно только кусок текста (рис. <span class="citation"
+data-cites="fig:004">[-@fig:004]</span>).</p>
+<figure>
+<img src="image/4.PNG" id="fig:004" style="width:70.0%"
+alt="Результат работы программы" />
+<figcaption aria-hidden="true">Результат работы программы</figcaption>
+</figure>
+<p>Листинг программы 1:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_key_hex(text):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(text)):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        key <span class="op">+=</span> random.choice(string.ascii_letters <span class="op">+</span> string.digits) <span class="co">#генерация цифры для каждого символа в тексте</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> key</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#для шифрования и дешифрования</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> en_de_crypt(text, key):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    new_text <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(text)): <span class="co">#проход по каждому символу в тексте</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        new_text <span class="op">+=</span> <span class="bu">chr</span>(<span class="bu">ord</span>(text[i]) <span class="op">^</span> <span class="bu">ord</span>(key[i <span class="op">%</span> <span class="bu">len</span>(key)]))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_text</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_possible_key(text, fragment):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    possible_keys <span class="op">=</span> []</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(text) <span class="op">-</span> <span class="bu">len</span>(fragment) <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        possible_key <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(fragment)):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            possible_key <span class="op">+=</span> <span class="bu">chr</span>(<span class="bu">ord</span>(text[i <span class="op">+</span> j]) <span class="op">^</span> <span class="bu">ord</span>(fragment[j]))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        possible_keys.append(possible_key)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> possible_keys</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">&#39;С Новым Годом, друзья!&#39;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> generate_key_hex(t)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>en_t <span class="op">=</span> en_de_crypt(t, key)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>de_t <span class="op">=</span> en_de_crypt(en_t, key)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>keys_t_f <span class="op">=</span> find_possible_key(en_t, <span class="st">&#39;С Новым&#39;</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>fragment <span class="op">=</span> <span class="st">&quot;С Новым&quot;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Открытый текст: &#39;</span>, t, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">Ключ: &quot;</span>, key, <span class="st">&#39;</span><span class="ch">\n</span><span class="st">Шифротекст: &#39;</span>, en_t, <span class="st">&#39;</span><span class="ch">\n</span><span class="st">Исходный текст: &#39;</span>, de_t,)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Возможные ключи: &#39;</span>, keys_t_f)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Расшифрованный фрагмент: &#39;</span>, en_de_crypt(en_t, keys_t_f[<span class="dv">0</span>]))</span></code></pre></div>
+<h1 id="ответы-на-контрольные-вопросы">Ответы на контрольные
+вопросы</h1>
+<ol type="1">
+<li><p>Поясните смысл однократного гаммирования. - Однократное
+гаммирование - это метод шифрования, при котором каждый символ открытого
+текста гаммируется с соответствующим символом ключа только один
+раз.</p></li>
+<li><p>Перечислите недостатки однократного гаммирования. - Недостатки
+однократного гаммирования:</p></li>
+</ol>
+<ul>
+<li>Уязвимость к частотному анализу из-за сохранения частоты символов
+открытого текста в шифротексте.</li>
+<li>Необходимость использования одноразового ключа, который должен быть
+длиннее самого открытого текста.</li>
+<li>Нет возможности использовать один ключ для шифрования разных
+сообщений.</li>
+</ul>
+<ol start="3" type="1">
+<li>Перечислите преимущества однократного гаммирования. - Преимущества
+однократного гаммирования:</li>
+</ol>
+<ul>
+<li>Высокая стойкость при правильном использовании случайного
+ключа.</li>
+<li>Простота реализации алгоритма.</li>
+<li>Возможность использования случайного ключа.</li>
+</ul>
+<ol start="4" type="1">
+<li><p>Почему длина открытого текста должна совпадать с длиной ключа? -
+Длина открытого текста должна совпадать с длиной ключа, чтобы каждый
+символ открытого текста гаммировался с соответствующим символом
+ключа.</p></li>
+<li><p>Какая операция используется в режиме однократного гаммирования,
+назовите её особенности? - В режиме однократного гаммирования
+используется операция XOR (исключающее ИЛИ), которая объединяет двоичные
+значения символов открытого текста и ключа для получения шифротекста.
+Особенность XOR - если один из битов равен 1, то результат будет 1,
+иначе 0.</p></li>
+<li><p>Как по открытому тексту и ключу получить шифротекст? - Для
+получения шифротекста по открытому тексту и ключу каждый символ
+открытого текста гаммируется с соответствующим символом ключа с помощью
+операции XOR.</p></li>
+<li><p>Как по открытому тексту и шифротексту получить ключ? - По
+открытому тексту и шифротексту невозможно восстановить действительный
+ключ, так как для этого нужна информация о каждом символе
+ключа.</p></li>
+<li><p>В чем заключаются необходимые и достаточные условия абсолютной
+стойкости шифра - Необходимые и достаточные условия абсолютной стойкости
+шифра:</p></li>
+</ol>
+<ul>
+<li>Ключи должны быть случайными и использоваться только один раз.</li>
+<li>Длина ключа должна быть не менее длины самого открытого текста.</li>
+<li>Ключи должны быть храниться и передаваться безопасным способом.</li>
+</ul>
+<h1 id="выводы">Выводы</h1>
+<p>В ходе выполнения данной лабораторной работы мной было освоено на
+практике применение режима однократного гаммирования.</p>
+<h1 class="unnumbered" id="список-литературы">Список литературы</h1>
+<div id="refs" role="doc-bibliography">
+
+</div>
